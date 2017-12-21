@@ -21,15 +21,18 @@ For an example of a mysql storage backend implementation of this safebrowsing cl
 
 ## Usage ##
 
-Install using composer.
+Install using composer (eg. `composer create-project web2all/safebrowsingv4`).
 
 Go to google and request a new API key, see [https://developers.google.com/safe-browsing/v4/get-started](https://developers.google.com/safe-browsing/v4/get-started).
 
 For tests run:
-`vendor/bin/phpunit --bootstrap src/tests/bootstrap-tests.php src/tests`
+`vendor/bin/phpunit tests`
 
 To test the safebrowsing client using the example file storage backend create a sample php script:
 
+    ini_set ( "memory_limit", "712M");
+    require_once('vendor/autoload.php');
+    
     $storage = new GoogleSafeBrowsing_Example_FileStorage('/writeable/dir/storage/');
     $updater = new GoogleSafeBrowsing_Updater('YOUR-GOOGLE-KEY', $storage);
 
@@ -51,12 +54,13 @@ To test the safebrowsing client using the example file storage backend create a 
 
     $updater->run();
 
-the above script will create a local hash prefix database in `'/writeable/dir/storage/'` and will keep it uptodate. You would want to run such a script in the background.
+the above script will create a local hash prefix database in `'/writeable/dir/storage/'` and will keep it uptodate. You would want to run such a script in the background. The initial run will need to download all prefixes. It is also pretty memory hungry, an initial run, or when all lists are reset could require 600Mb.
 
 Once above script runs, you can do lookups like this:
 
+    require_once('vendor/autoload.php');
     $storage = new GoogleSafeBrowsing_Example_FileStorage('/writeable/dir/storage/');
-    $updater=new GoogleSafeBrowsing_Updater('YOUR-GOOGLE-KEY', $storage);
+    $api=new GoogleSafeBrowsing_API('YOUR-GOOGLE-KEY');
     
     $lookup=new GoogleSafeBrowsing_Lookup($api, $storage);
 
