@@ -82,6 +82,10 @@ Once above script runs, you can do lookups like this:
 
 Do not use the included FileStorage example storage backend in production! It is not efficeient, its just an implementation example. If you must, use `web2all/safebrowsingv4-sqlstorage` which can be used with mysql. Or implement you own storage backend by implementing the `GoogleSafeBrowsing_Lookup_IStorage` and `GoogleSafeBrowsing_Updater_IStorage` interfaces.
 
+## See also ##
+
+- `web2all/safebrowsingv4-sqlstorage` [https://github.com/web2all/safebrowsingv4-sqlstorage](https://github.com/web2all/safebrowsingv4-sqlstorage) for a SQL based storage implementation.
+
 ## License ##
 
 Web2All safebrowsingv4 is open-sourced software licensed under the MIT license ([https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT "license")).
