@@ -1,0 +1,30 @@
+{
+    "name": "web2all/safebrowsingv4",
+    "description": "Google safebrowsing client in PHP using the update API",
+    "keywords": ["google","safebrowsing"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Merijn van den Kroonenberg",
+            "email": "merijn@web2all.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8",
+        "mikey179/vfsStream": "~1"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    }
+}
+
